@@ -1,4 +1,5 @@
 var donorContainer = document.getElementById("donor-container");
+var showRecentDonors= document.getElementById("recent-donors");
 var donorTable = document.getElementById("table");
 var nameUserInput = document.getElementById("input-name");
 var emailUserInput = document.getElementById("input-email");
@@ -28,18 +29,15 @@ function printArrayToDom () {
 	var recentDonorsArray = DonorInfo.getDonorInfo();
 	var donorString = "";
 
-	donorString += `<tbody>`;
-
 	for (var i=0; i < recentDonorsArray.length; i++) {
-		donorString += `<table class="table">`;
 		donorString += `<tr>`;
 		donorString += `<td>${recentDonorsArray[i].name}</td>`;
 		donorString += `<td>${recentDonorsArray[i].pledge}</td>`;
-		donorString += `</tr></table>`;
+		donorString += `<td><span class="glyphicon glyphicon-usd" aria-hidden="true"></span></td>`;
+		donorString += `</tr>`;
 	}
 
-	donorString += `</tbody>`;
-	donorContainer.innerHTML = donorString;
+	showRecentDonors.innerHTML = donorString;
 };
 
 donateButton.addEventListener("click", function(){
